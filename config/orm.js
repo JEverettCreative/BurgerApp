@@ -17,9 +17,9 @@ function objToSql(obj) {
 }
 
 var orm = {
-    selectAll: function(tableInput) {
-        var queryString = "SELECT * FROM ??";
-        connection.query(queryString, [tableInput], function (err, result) {
+    selectAll: function(cb) {
+        var queryString = "SELECT * FROM burgers";
+        connection.query(queryString, function (err, result) {
             if (err) throw err;
             console.log(result);
         });
@@ -54,3 +54,5 @@ var orm = {
         });
     }
 }
+
+module.exports = orm;
