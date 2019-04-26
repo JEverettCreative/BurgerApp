@@ -40,14 +40,11 @@ var orm = {
             cb(result);
         });
     },
-    updateOne: function(table, objColVal, condition, cb) {
-        var queryString = "UPDATE " + table;
+    updateOne: function(tableInput, condition, cb) {
+        var queryString = "UPDATE " + tableInput;
 
-        queryString += " SET ";
-        queryString += objToSql(objColVal);
-        queryString += " WHERE ";
-        queryString += condition;
-
+        queryString += " SET devoured=true WHERE id=";
+        queryString += condition + ";";
         console.log(queryString);
         connection.query(queryString, function(err, result) {
             if (err) throw err;

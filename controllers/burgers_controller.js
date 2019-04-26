@@ -6,9 +6,6 @@ var burger = require("../models/burger");
 
 router.get("/", function(req, res) {
     burger.all(function(data) {
-        // var newObject = {
-        //     burger: data
-        // };
         console.log(data);
         res.render("index", {data});
     });
@@ -16,5 +13,12 @@ router.get("/", function(req, res) {
 
 // router.post("/api/burger")
 // Create the POST code here to establish routes
+
+router.put("/burgers/update", function(req, res) {
+    burger.update(req.body.burger_id, function(result) {
+        console.log(result);
+        res.redirect("/");
+    });
+});
 
 module.exports = router;
