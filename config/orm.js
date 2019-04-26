@@ -25,17 +25,11 @@ var orm = {
             cb(result);
         });
     },
-    insertOne: function(table, cols, val, cb) {
-        var queryString = "INSERT INTO " + table;
+    insertOne: function(tableInput, val, cb) {
+        var queryString = "INSERT INTO " + tableInput + " (burger_name)";
+        queryString += "VALUES ('" + val + "');";
 
-        queryString += " (";
-        queryString += cols.toString();
-        queryString += ") ";
-        queryString += "VALUES (" + val + ") ";
-
-        console.log(queryString);
-
-        connection.query(queryString, val, function(err, result) {
+        connection.query(queryString, function(err, result) {
             if (err) throw err;
             cb(result);
         });

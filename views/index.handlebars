@@ -3,7 +3,7 @@
         <div class="col-xs-12 text-center">
             <h1>Eat Da Burger!</h1>
         </div>
-        <div class="col-xs-6 text-center" class="task">
+        <div class="col-xs-6 text-center" class="task" id="undevoured-burgers">
             <div class="row">
                 {{#each data}}
                     {{#unless this.devoured}}
@@ -22,11 +22,25 @@
                 {{/each}}
             </div>
         </div>
+        <div class="col-xs-6 text-center" id="devoured-burgers">
+            {{#each data}}
+                {{#if this.devoured}}
+                <input class="form-control" type="text" placeholder=
+                "{{this.id}}. {{this.burger_name}}" readonly>
+                {{/if}}
+            {{/each}}
+        </div>
     </div>
 </div>
 
-<form>
-    <div class="form-group">
-        <textarea class="form-control" id="burger-form" rows="5"></textarea>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 text-center" id="newburger-section">
+            <form method="POST" action="/burgers/create">
+            <input type="text" name="burger_name" class="form-control" value="" id="new-text">
+                <button type="submit" class="btn btn-primary" id="submit-btn">Submit Order</button>
+            <h4>Type in a burger you'd like to order and devour!</h4>
+            </form>
+        </div>
     </div>
-</form>
+</div>
