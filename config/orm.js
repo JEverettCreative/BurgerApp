@@ -1,21 +1,5 @@
 var connection = require("./connection");
 
-function objToSql(obj) {
-    var arr = [];
-
-    for (var key in obj) {
-        var value = obj[key];
-
-        if (Object.hasOwnProperty.call(obj, key)) {
-            if (typeof value === "string" && value.indexOf(" ") >= 0) {
-                value = "'" + value + "'";
-            }
-
-            arr.push(key + value);
-        }
-    }
-}
-
 var orm = {
     selectAll: function(tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";

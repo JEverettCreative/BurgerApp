@@ -11,11 +11,11 @@
                     <pre>{{this.id}}. {{this.burger_name}}</pre>
                 </div>
                 <div class="col-xs-3 text-center">
-                    <form method="POST" action="/burgers/update?_METHOD=PUT"
+                    <form method="POST" action="/burgers/update?_method=PUT"
                         class="button-size">
                         <input type="hidden" name="burger_id" type="text" value={{this.id}}>
                         <br>
-                        <button type="submit" class="btn btn-lg btn-success">DEVOUR! NOM!</button> 
+                        <button type="submit" class="btn btn-lg btn-success devour">DEVOUR! NOM!</button> 
                     </form>
                 </div>
                 {{/unless}}
