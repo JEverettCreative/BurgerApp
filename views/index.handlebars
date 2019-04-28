@@ -1,4 +1,4 @@
-<div class="container">
+{{!-- <div class="container">
     <div class="row">
         <div class="col-xs-12 text-center">
             <h1>Eat Da Burger!</h1>
@@ -31,10 +31,48 @@
             {{/each}}
         </div>
     </div>
+</div> --}}
+
+<div class="container">
+    <div class="row justify-content-center" id="heading-row">
+        <h1><span><i class="fas fa-hamburger"></i></span>Eat Da Burger!</h1>
+    </div>
+
+    <div class="row justify-content-center" id="main-content">
+        <div class="col-md-3" id="burger-col">
+            {{#each data}}
+                {{#unless this.devoured}}
+                <div class="row burger-row">
+                    <pre>{{this.id}}. {{this.burger_name}}</pre>
+                </div>
+                {{/unless}}
+            {{/each}}
+        </div>
+        <div class="col-md-2" id="devour-col">
+            {{#each data}}
+                {{#unless this.devoured}}
+                <form method="POST" action="/burgers/update?_method=PUT"
+                    class="button-size">
+                    <input type="hidden" name="burger_id" type="text" value={{this.id}}>
+                    <br>
+                    <button type="submit" class="btn btn-success">DEVOUR! NOM!</button> 
+                </form>
+                {{/unless}}
+            {{/each}}
+        </div>
+        <div class="col-md-3" id="devoured-col">
+            {{#each data}}
+                {{#if this.devoured}}
+                    <input class="form-control" type="text" placeholder=
+                "{{this.id}}. {{this.burger_name}}" readonly>
+                {{/if}}
+            {{/each}}
+        </div>
+    </div>
 </div>
 
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-xs-12 text-center" id="newburger-section">
             <form method="POST" action="/burgers/create">
             <input type="text" name="burger_name" class="form-control" value="" id="new-text">
