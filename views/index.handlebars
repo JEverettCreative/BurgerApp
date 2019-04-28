@@ -1,66 +1,30 @@
-{{!-- <div class="container">
-    <div class="row">
-        <div class="col-xs-12 text-center">
-            <h1>Eat Da Burger!</h1>
-        </div>
-        <div class="col-xs-6 text-center" class="task" id="undevoured-burgers">
-            <div class="row">
-                {{#each data}}
-                    {{#unless this.devoured}}
-                <div class="col-xs-9 text-center">
-                    <pre>{{this.id}}. {{this.burger_name}}</pre>
-                </div>
-                <div class="col-xs-3 text-center">
-                    <form method="POST" action="/burgers/update?_method=PUT"
-                        class="button-size">
-                        <input type="hidden" name="burger_id" type="text" value={{this.id}}>
-                        <br>
-                        <button type="submit" class="btn btn-lg btn-success">DEVOUR! NOM!</button> 
-                    </form>
-                </div>
-                {{/unless}}
-                {{/each}}
-            </div>
-        </div>
-        <div class="col-xs-6 text-center" id="devoured-burgers">
-            {{#each data}}
-                {{#if this.devoured}}
-                <input class="form-control" type="text" placeholder=
-                "{{this.id}}. {{this.burger_name}}" readonly>
-                {{/if}}
-            {{/each}}
-        </div>
-    </div>
-</div> --}}
-
 <div class="container">
     <div class="row justify-content-center" id="heading-row">
         <h1><span><i class="fas fa-hamburger"></i></span>Eat Da Burger!</h1>
     </div>
 
     <div class="row justify-content-center" id="main-content">
-        <div class="col-md-3" id="burger-col">
+        <div class="col-md-4" id="burger-col">
             {{#each data}}
                 {{#unless this.devoured}}
-                <div class="row burger-row">
-                    <pre>{{this.id}}. {{this.burger_name}}</pre>
+                <div class="row justify-content-center burger-row">
+                    <div class="col-8 text-center rounded burger-label">
+                        <pre>{{this.id}}. {{this.burger_name}}</pre>
+                    </div>
+                    <div class="col-4 text-center align-content-center">
+                        <form method="POST" action="/burgers/update?_method=PUT"
+                            class="button-size">
+                            <input type="hidden" name="burger_id" type="text" value={{this.id}}>
+                            <br>
+                            <button type="submit" class="btn btn-sm btn-success">DEVOUR! NOM!</button> 
+                        </form>
+                    </div>
                 </div>
                 {{/unless}}
             {{/each}}
         </div>
-        <div class="col-md-2" id="devour-col">
-            {{#each data}}
-                {{#unless this.devoured}}
-                <form method="POST" action="/burgers/update?_method=PUT"
-                    class="button-size">
-                    <input type="hidden" name="burger_id" type="text" value={{this.id}}>
-                    <br>
-                    <button type="submit" class="btn btn-success">DEVOUR! NOM!</button> 
-                </form>
-                {{/unless}}
-            {{/each}}
-        </div>
-        <div class="col-md-3" id="devoured-col">
+        
+        <div class="col-md-4" id="devoured-col">
             {{#each data}}
                 {{#if this.devoured}}
                     <input class="form-control" type="text" placeholder=
