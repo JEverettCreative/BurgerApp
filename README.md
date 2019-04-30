@@ -12,7 +12,7 @@ Eat Da Burger! is a full-stack web application that interacts with a MySQL datab
 
 
 ## Heroku Deployment
-https://peaceful-journey-29576.herokuapp.com/
+https://morning-waters-82638.herokuapp.com/
 
 ## How-to use this code
 * If you would like to run the code locally rather than through the deployed link, you should download the files and run a local server instance through your CLI. You'll need to initialize your NPM for Express.
